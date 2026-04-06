@@ -1,0 +1,135 @@
+body{
+    margin: auto;
+    position: relative;
+}
+
+.body{
+    background: #230630;
+    padding-top: 100px;
+    padding-bottom: 200px;
+    background: linear-gradient(25deg, rgba(35, 6, 48, 1) 54%, rgba(126, 8, 166, 1) 100%);
+    color:#fff;
+}
+
+.wavy-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: -1; /* This places it behind all other content */
+}
+
+/* alert */
+  .alert-banner {
+    background-color: #ffcc00;
+    color: #000;
+    font-weight: bold;
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    border-bottom: 2px solid #000;
+  }
+
+  .alert-text {
+    display: inline-block;
+    /* Start fully off-screen to the right */
+    transform: translateX(100%);
+    animation: scroll-left 10s linear infinite;
+  }
+
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+
+/* custom */
+
+.hero-center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* margin-top: -20px; */
+}
+
+.center-logo{
+    text-align: center;
+}
+.summer-logo{
+    max-width: 30%;
+}
+
+.top-logos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.top-right-wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px; /* Adjust size as needed */
+  height: 200px; /* Adjust size as needed */
+  /* z-index: -1; */
+  /* transform: rotate(180deg); */
+}
+
+.top-right-wave svg {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.opp-logo{
+    width: 150px;
+}
+
+.rccg-logo{
+    width:70px;
+}
+
+.sections{
+    padding: 30px;
+}
+
+.section1{
+    /* border-radius: 20px; */
+    background: rgba(13, 205, 6, 0.3)
+}
+
+.day-header-pos{
+    position: absolute;
+    background: red;
+    width: 200px;
+}
+
+.day-header{
+    font-family: "Bangers", cursive;
+  transform: translate3d(-50%,-50%,0) rotate(-7deg);
+  font-size: 3em;
+  width: 90%;
+  position: absolute;
+  z-index: 0;
+  left: 55%;
+  top: 50%;
+  /* color: mix(yellow, #ffdb29, 80%); */
+  color:yellow;
+  text-shadow:
+    -2px -2px 0 brown,
+    2px -2px 0 brown,
+    -2px 2px 0 brown,
+    2px 2px 0 brown; /* Creates a stroke effect */
+}

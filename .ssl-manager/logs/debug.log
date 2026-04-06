@@ -1,0 +1,5 @@
+time="2025-10-01T09:35:55-04:00" level=error msg="Error executing CLI: panel credentials not found"
+time="2025-10-01T09:36:01-04:00" level=info msg="Domain rccgopp.org is now under management"
+time="2025-10-01T09:36:01-04:00" level=info msg="Starting AutoSSL process..."
+time="2025-10-01T09:36:01-04:00" level=info msg="Result[rccgopp.org]"
+time="2025-10-01T09:36:01-04:00" level=info msg="AutoSSL process completed."

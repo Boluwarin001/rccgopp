@@ -1,0 +1,70 @@
+[01-Oct-2025 13:35:50 UTC] Home directory set to: /home/rccgddue
+[01-Oct-2025 13:35:50 UTC] Binary directory: /home/rccgddue/bin, Manager path: /home/rccgddue/bin/ssl-manager
+[01-Oct-2025 13:35:50 UTC] API Base URL: https://externalautossl.service.spaceship.com/api/v1/externalautossl/user
+[01-Oct-2025 13:35:50 UTC] Download URL: https://ssl-manager.s3.amazonaws.com/bin/ssl-manager
+[01-Oct-2025 13:35:54 UTC] Home directory set to: /home/rccgddue
+[01-Oct-2025 13:35:54 UTC] Binary directory: /home/rccgddue/bin, Manager path: /home/rccgddue/bin/ssl-manager
+[01-Oct-2025 13:35:54 UTC] API Base URL: https://externalautossl.service.spaceship.com/api/v1/externalautossl/user
+[01-Oct-2025 13:35:54 UTC] Download URL: https://ssl-manager.s3.amazonaws.com/bin/ssl-manager
+[01-Oct-2025 13:35:54 UTC] Action received: install
+[01-Oct-2025 13:35:54 UTC] Install action initiated.
+[01-Oct-2025 13:35:54 UTC] Created bin directory: /home/rccgddue/bin
+[01-Oct-2025 13:35:54 UTC] Downloading manager binary from https://ssl-manager.s3.amazonaws.com/bin/ssl-manager
+[01-Oct-2025 13:35:54 UTC] Trying file_get_contents method
+[01-Oct-2025 13:35:55 UTC] Downloaded manager binary using file_get_contents
+[01-Oct-2025 13:35:55 UTC] Manager installed successfully.
+[01-Oct-2025 13:35:55 UTC] Fetching manager info.
+[01-Oct-2025 13:35:55 UTC] Running command: /home/rccgddue/bin/ssl-manager info 2>/dev/null
+[01-Oct-2025 13:35:55 UTC] Manager info: Error: Could not get control panel credentials
+{"error": "Error: panel credentials not found"}
+
+[01-Oct-2025 13:35:59 UTC] Home directory set to: /home/rccgddue
+[01-Oct-2025 13:35:59 UTC] Binary directory: /home/rccgddue/bin, Manager path: /home/rccgddue/bin/ssl-manager
+[01-Oct-2025 13:35:59 UTC] API Base URL: https://externalautossl.service.spaceship.com/api/v1/externalautossl/user
+[01-Oct-2025 13:35:59 UTC] Download URL: https://ssl-manager.s3.amazonaws.com/bin/ssl-manager
+[01-Oct-2025 13:35:59 UTC] Action received: register
+[01-Oct-2025 13:35:59 UTC] Running command: /home/rccgddue/bin/ssl-manager register -t 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjFkNmlmTUlzRlpTcU5GTzdkWDBkeTltanBqX21qX1NnZ084bng2ektQTHcifQ.eyJpc3MiOiJodHRwczovL2V4dGVybmFsYXV0b3NzbC5zZXJ2aWNlLnNwYWNlc2hpcC5jb20iLCJuYmYiOjE3NTkzMjU1ODIsImlhdCI6MTc1OTMyNTU4MiwiZXhwIjoxNzU5NDExOTgyLCJhdWQiOlsiZXh0ZXJuYWxhdXRvc3NsIl0sInNjb3BlIjpbImV4dGVybmFsYXV0b3NzbC5leHRlcm5hbGF1dG9zc2wiLCJleHRlcm5hbGF1dG9zc2wudXNlci1pbnRlZ3JhdGlvbi1jcmVhdGUiXSwiY2xpZW50X2lkIjoiZXh0ZXJuYWwtc3NsLWNsaWVudCIsInN1YiI6Ijk5YWQzYTdiLTE2NzctNDU3NS1hMjU1LWQ2YzEzNmRmMTQ4OCJ9.a9VibX1rZas8fWOwvSq6VX0XbUHhVGNojHv3Isdg3fXsrTENPylKiap7X_00v62NEdCgquqczWGSWJ48D4-MsjqeFKgIwWvajeOQC-OvQk6H5-7jQv9mrczeoavKjbmH-65RkqdqB7KHOraf072SkiW7JSM6f0IdHBvpxDxfCvsJxSGnJhgaizJddtSrF9ba7xAgNcH1hKftgExzodMvSCdF7lqXCE6bYrq4bcd1kCLy7HOVR9qots007sCg95KOB3DsaubPMdGo8rCSBzIS7UJGjUEEWwVYxKrfSkY4t9LlrhqvXpy6bZImxs2sGk8FOH2FWgRaIeMfpoPYUKyDkw' -u 'https://externalautossl.service.spaceship.com/api/v1/externalautossl/user/' 2>&1
+[01-Oct-2025 13:36:01 UTC] Registration output: Installing certificate manager
+Vendor registered successfully
+Integrated with control panel successfully
+Setting up cron job
+
+[01-Oct-2025 13:36:01 UTC] Fetching manager info.
+[01-Oct-2025 13:36:01 UTC] Running command: /home/rccgddue/bin/ssl-manager info 2>/dev/null
+[01-Oct-2025 13:36:01 UTC] Manager info: Control panel credentials found
+Vendor credentials found
+Manager is ready
+
+[01-Oct-2025 13:36:12 UTC] Home directory set to: /home/rccgddue
+[01-Oct-2025 13:36:12 UTC] Binary directory: /home/rccgddue/bin, Manager path: /home/rccgddue/bin/ssl-manager
+[01-Oct-2025 13:36:12 UTC] API Base URL: https://externalautossl.service.spaceship.com/api/v1/externalautossl/user
+[01-Oct-2025 13:36:12 UTC] Download URL: https://ssl-manager.s3.amazonaws.com/bin/ssl-manager
+[01-Oct-2025 13:36:12 UTC] Action received: remove_installer
+[01-Oct-2025 13:36:12 UTC] Fetching manager info.
+[01-Oct-2025 13:36:12 UTC] Running command: /home/rccgddue/bin/ssl-manager info 2>/dev/null
+[01-Oct-2025 13:36:12 UTC] Manager info: Control panel credentials found
+Vendor credentials found
+Manager is ready
+
+[01-Oct-2025 13:36:12 UTC] Remove installer action initiated.
+[01-Oct-2025 13:36:12 UTC] Installer file removed.
+[01-Oct-2025 14:30:40 UTC] Home directory set to: /home/rccgddue
+[01-Oct-2025 14:30:40 UTC] Binary directory: /home/rccgddue/bin, Manager path: /home/rccgddue/bin/ssl-manager
+[01-Oct-2025 14:30:40 UTC] API Base URL: https://externalautossl.service.spaceship.com/api/v1/externalautossl/user
+[01-Oct-2025 14:30:40 UTC] Download URL: https://ssl-manager.s3.amazonaws.com/bin/ssl-manager
+[01-Oct-2025 14:30:40 UTC] Fetching manager info.
+[01-Oct-2025 14:30:40 UTC] Running command: /home/rccgddue/bin/ssl-manager info 2>/dev/null
+[01-Oct-2025 14:30:40 UTC] Manager info: Control panel credentials found
+Vendor credentials found
+Manager is ready
+
+[01-Oct-2025 15:37:31 UTC] Home directory set to: /home/rccgddue
+[01-Oct-2025 15:37:31 UTC] Binary directory: /home/rccgddue/bin, Manager path: /home/rccgddue/bin/ssl-manager
+[01-Oct-2025 15:37:31 UTC] API Base URL: https://externalautossl.service.spaceship.com/api/v1/externalautossl/user
+[01-Oct-2025 15:37:31 UTC] Download URL: https://ssl-manager.s3.amazonaws.com/bin/ssl-manager
+[01-Oct-2025 15:37:31 UTC] Fetching manager info.
+[01-Oct-2025 15:37:31 UTC] Running command: /home/rccgddue/bin/ssl-manager info 2>/dev/null
+[01-Oct-2025 15:37:31 UTC] Manager info: Control panel credentials found
+Vendor credentials found
+Manager is ready
+
