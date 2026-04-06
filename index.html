@@ -5,396 +5,516 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Overcomers Pavilion Parish RCCG</title>
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css?v=3">
+    <!-- youth.css is kept but we don't need to override -->
     <link rel="stylesheet" href="youth.css?v=2">
-
-    <!-- meta code to refresh every 10 seconds -->
-    <!-- <meta http-equiv="refresh" content="5"> -->
-
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><div class="block-header2">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
-    
-
+    <style>
+        /* Modal Styles (new) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a1a, #000);
+            margin: 8% auto;
+            padding: 30px;
+            border-radius: 30px;
+            width: 90%;
+            max-width: 700px;
+            color: #fff;
+            border: 1px solid gold;
+            box-shadow: 0 0 30px rgba(255,215,0,0.3);
+            position: relative;
+        }
+        .close-modal {
+            color: gold;
+            float: right;
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .close-modal:hover { color: #fff; }
+        .modal-title {
+            font-size: 2rem;
+            font-family: 'Dancing Script', cursive;
+            color: gold;
+            margin-bottom: 20px;
+        }
+        .outreach-dates-grid {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 8px;
+            background: rgba(0,0,0,0.5);
+            padding: 15px;
+            border-radius: 20px;
+            margin-top: 15px;
+        }
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+        .blog-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: 1px solid rgba(255,215,0,0.3);
+        }
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.5);
+            border-color: gold;
+        }
+        .blog-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        .blog-info {
+            padding: 20px;
+        }
+        .blog-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: gold;
+            margin-bottom: 10px;
+        }
+        .blog-excerpt {
+            color: #ddd;
+            font-size: 0.9rem;
+        }
+        .read-more {
+            display: inline-block;
+            margin-top: 15px;
+            color: gold;
+            font-weight: bold;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Dancing Script', cursive;
+            color: gold;
+        }
+        /* Keep original upcoming events style untouched */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+        .event-box {
+            background-color: #f0f0f0;
+            background: linear-gradient(135deg, #b8860b, #000);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: #fff;
+        }
+        .month {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .date {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .event-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .event-time, .event-location {
+            font-size: 14px;
+        }
+        @media (max-width: 700px) {
+            .modal-content { margin: 20% auto; width: 95%; padding: 20px; }
+            .blog-grid { grid-template-columns: 1fr; }
+            .events-grid { grid-template-columns: 1fr; }
+        }
+        .grid-item {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    
-    <style>
-        
-  .alert-banner {
-    background-color: #ffcc00;
-    color: #000;
-    font-weight: bold;
-    padding: 10px 0;
-    overflow: hidden;
-    white-space: nowrap;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 9999;
-    border-bottom: 2px solid #000;
-  }
 
-  .alert-track {
-    display: inline-block;
-    animation: scroll-left 10s linear infinite;
-  }
-
-  .alert-text {
-    display: inline-block;
-    padding-right: 50px; /* spacing between repeats */
-  }
-
-  @keyframes scroll-left {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-    </style>
-   
-   <!--<a href="youth-trip"> -->
-   <!-- <div class="alert-banner">-->
-   <!--   <div class="alert-track">-->
-   <!--     <span class="alert-text">The 2025 Summer Youth Retreat is Live !!!</span>-->
-   <!--     <span class="alert-text">The 2025 Summer Youth Retreat is Live !!!</span>-->
-   <!--     <span class="alert-text">The 2025 Summer Youth Retreat is Live !!!</span>-->
-   <!--   </div>-->
-   <!-- </div>-->
-   <!-- </a>-->
-
-    
-    <nav>
-        <div class="nav-container">
-            <div class="logo">
-                <img src="logo-gold2.png" alt="Church Logo">
-                <img src="rccg-logo.png" style="width: 60px;margin-left: 20px;" alt="RCCG Logo">
-            </div>
-            <div class="nav-links" id="navLinks">
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#visit">Visit</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <a href="javascript:void(0);" class="nav-icon" onclick="toggleMenu()">
-                &#9776;
-            </a>
+<nav>
+    <div class="nav-container">
+        <div class="logo">
+            <img src="logo-gold2.png" alt="Church Logo">
+            <img src="rccg-logo.png" style="width: 60px;margin-left: 20px;" alt="RCCG Logo">
         </div>
-    </nav>
-
-    <script>
-        function toggleMenu() {
-            var navLinks = document.getElementById("navLinks");
-            if (navLinks.style.display === "block") {
-                navLinks.style.display = "none";
-            } else {
-                navLinks.style.display = "block";
-            }
-        }
-    </script>
-    
-    
-
-  <script>
-    const slides = document.querySelectorAll('.slide');
-    let current = 0;
-
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-      });
-    }
-
-    setInterval(() => {
-      current = (current + 1) % slides.length;
-      showSlide(current);
-    }, 3000); // change slide every 3 seconds
-  </script>
-
-
-
-    <div class="uk-section uk-lr">
-        <div class="uk-lr-text">
-            <h1 class="uk-bigtext">Overcomers<br>Pavilion Parish</h1>
-            <div class="uk-smalltext">Join us in our mission to spread the fragrance and the fire of Almighty Jesus in Manchester through our committment to the Word, to Prayer and Love.</div>
+        <div class="nav-links" id="navLinks">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#visit">Visit</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#blog-section">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
-        <div class="uk-lr-image" style="background: url(group-selfie.jpg?v=2) center no-repeat;background-size: cover;">
-        </div>
+        <a href="javascript:void(0);" class="nav-icon" onclick="toggleMenu()">&#9776;</a>
     </div>
+</nav>
 
-    
-    <section id="about" class="section fade-in">
-        <div class="pill-letter" style="background:linear-gradient(135deg, rgb(255,255,255,0.05), #000);box-shadow:0 0 20px rgb(0,0,0,0.5)">
-        <!--<div class="pill-letter" style="background:rgb(255,255,255,0.05)">-->
+<script>
+    function toggleMenu() {
+        var navLinks = document.getElementById("navLinks");
+        navLinks.style.display = navLinks.style.display === "block" ? "none" : "block";
+    }
+</script>
+
+<!-- Hero Section -->
+<div class="uk-section uk-lr">
+    <div class="uk-lr-text">
+        <h1 class="uk-bigtext">Overcomers<br>Pavilion Parish</h1>
+        <div class="uk-smalltext">Join us in our mission to spread the fragrance and the fire of Almighty Jesus in Manchester through our committment to the Word, to Prayer and Love.</div>
+    </div>
+    <div class="uk-lr-image" style="background: url(group-selfie.jpg?v=2) center no-repeat;background-size: cover;"></div>
+</div>
+
+<!-- About Section -->
+<section id="about" class="section fade-in">
+    <div class="pill-letter" style="background:linear-gradient(135deg, rgb(255,255,255,0.05), #000);box-shadow:0 0 20px rgb(0,0,0,0.5)">
         <div class="pill-letter-pad">
             <div class="about-flex">
                 <div class="about-flex-left">
                     <div class="about-left-image" style="background: url(pastors.jpg) top center no-repeat;background-size: cover;"></div>
                 </div>
                 <div class="about-flex-right">
-                    <div class="block-header"  style="color:gold;font-family:'Dancing Script'">Welcome Home,</div>
-                    <p>Dearly beloved, In these last days, the bible says that wickedness will multiply, and the love of many will grow cold. We are called to be the voice of the voiceless and the hope of the hopeless. We are called to be the hands and feet of Jesus Christ.</p>
-                    <br>
-                    <br>
-
-                    <p>It is my sincere prayer and hope for you dear beloved, to seek the face of God and keep extra oil. We must repent and believe the gospel, and times of refreshing as the Word says, will come upon you. We are here to pray and do life with you as a family. We love you, and our Lord Jesus Christ loves you.</p>
-
-
-                    <br>
-                    <br>
-
-                    <p>Pastors Oluyemi & Aderike Coker. </p>
-                </div>
-            </div>
-        </div>
-        </div>
-    </section>
-
-    
-
-
-    <section id="home" class="section">
-        
-        <center>
-        <div class="block-image" style="background: url(2026.jpg) center no-repeat;background-size: cover;"></div>
-                
-        <div class="block">
-                <div class="block-header2" style="color:gold">2026</div>
-                <div class="block-header">Our Year of <span style="font-family:'Dancing Script';">New Beginnings</span></div>
-        </div>
-        </center>
-            
-        <!--<div class="container">-->
-
-        <!--    <div class="block">-->
-        <!--    </div>-->
-        <!--</div>-->
-    </section>
-    
-
-
-    <!--  -->
-
-    <section id="events" class="section" style="margin-top:-30px">
-        <div class="container meetings-container">
-            
-            <div class="meetings-left">
-                <div class="block-header2"><b>Join Our Weekly Meetings</b></div>
-                <p>Via Zoom call using this link:</p>
-                <p><a href="https://us02web.zoom.us/j/4883949279?pwd=sDUsQaOnGspjUn2DwRA6wVZkcBOfCl.1" style="color:gold">
-                    https://us02web.zoom.us/j/4883949279?<br>pwd=sDUsQaOnGspjUn2DwRA6wVZkcBOfCl.1
-
-                </a>
-                </p>
-                
-            </div>
-            
-            <div class="meetings-right">
-                <div class="meeting">
-                    <div class="meeting-day block-header">Sundays</div>
-                    <div class="meeting-text">Sunday Service. (Onsite and Online) 9:30AM - 12:30PM</div>
-                </div>
-                <div class="meeting">
-                    <div class="meeting-day block-header">Mondays</div>
-                    <div class="meeting-text">Thanksgiving (Online) 5:30PM - 6:00PM</div>
-                </div>
-                <div class="meeting">
-                    <div class="meeting-day block-header">Tuesdays</div>
-                    <div class="meeting-text">Bible Study. (Online) 6:00PM - 7:00PM</div>
-                </div>
-                <div class="meeting">
-                    <div class="meeting-day block-header">Fridays</div>
-                    <div class="meeting-text">Family Prayers. (Online) 5:30PM - 6:00PM</div>
-                </div>
-                <div class="meeting">
-                    <div class="meeting-day block-header">Homeless Outreach</div>
-                    <div class="meeting-text">Every last Saturday of the month (Picadilly 7pm - 9:30pm)</div>
-                </div>
-            </div>
-    </section>
-
-    <!--  -->
-        
-    <section id="ministries" class="section">
-        <div class="container" style="display: block;">
-            <h2>Our Ministries</h2>
-
-            <div class="grid3-container">
-                <div class="grid-item" style="background: url(youth.jpg) center no-repeat;background-size: cover;">
-                    <p>Youth Ministry</p>
-                </div>
-                <div class="grid-item" style="background: url(children.jpg?v=2) center no-repeat;background-size: cover;">
-                    <p>Children's Ministry</p>
-                </div>
-                <div class="grid-item" style="background: url(house-fellowship.jpg) center no-repeat;background-size: cover;">
-                    <p>House Fellowship</p>
-                </div>
-            </div>
-
-        </div>
-
-    </section>
-
-    
-    
-    
-    <div style="max-width: 800px;margin: auto;">
-        
-    <div class="block-header" style="text-align: center;">Upcoming Events</div>
-
-    <div class="events-grid">
-        
-        <div class="event-box">
-            <div class="month">DECEMBER</div>
-            <div class="date">27</div>
-            <div class="event-title">Church Anniversary Worship Night</div>
-            <div class="event-time">1pm-5pm</div>
-            <div class="event-location">Methodist Central Hall, Manchester Picadilly</div>
-        </div>
-        
-        <div class="event-box">
-            <div class="month">DECEMBER</div>
-            <div class="date">28</div>
-            <div class="event-title">Church Anniversary Service</div>
-            <div class="event-time">10:am</div>
-            <div class="event-location">Methodist Central Hall, Manchester Picadilly</div>
-        </div>
-        
-        
-        
-    </div>
-    </div>
-
-    
-    <!--  -->
-
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="block">
-                <div class="block-image image1" style="background: url(contact.png?v=2) top center no-repeat;background-size: cover;"></div>
-            </div>
-            <div class="block">
-                <div class="block-header">Contact Us</div>
-                <div class="block-header2">
-                    Feel free to reach out to us for any inquiries or prayer requests.
-                    <p>Email: info@rccgopp.org</p>
-                    <p>Phone: <a href="+447490977623">+4474 9097 7623</a>, <a href="tel:+447979270136">+4479 7927 0136</a></p>
-                    
-                    <br>
-                    <p>Or view our Instagram to stay current on the latest updates from church</p>
-                    <br>
-                    <p><a target="_blank" href="https://instagram.com/rccg_opp"><div class="btn"><i class="fab fa-instagram"></i> RCCG_OPP</div></a></p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    
-
-    <br>
-    <br>
-    <br>
-    <br>
-
-
-    <div style="width:100%;margin:auto;text-align: center;" id="visit">
-        
-        <div class="block-header">Join us this Sunday</div>
-        <div class="block-header2">If you're in Manchester, we can't wait to have you. <p>Worship with us at Lincoln 1, Methodist Central Hall, M1 1JQ.</p></div>
-
-        <br>
-        <br>
-    
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2374.2244045169155!2d-2.238405973260068!3d53.48232012232909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bba7683115f49%3A0xe36d2103ec4860a2!2sMethodist%20Central%20Hall!5e0!3m2!1sen!2suk!4v1728764170011!5m2!1sen!2suk" width="100%" height="450" style="border:0;" allowfullscreen="" loading="" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-    </div>
-
-
-    <div class="pill-wide" style="margin-top: -5px;">
-        <div class="pill-wide-max-width">
-            <div>
-                <div class="block-header">Looking for a church home?</div>
-                <p>Sundays 09:30 AM. Lincoln 1, 1st floor, Methodist Central Hall, Oldham Street, Manchester Picadilly M1 1JQ.</p>
-            </div>
-            <div>
-                <a href="https://wa.me/447726705303"><div class="rounded-button">START HERE</div></a>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="footer">
-
-
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-section about">
-                    <h3>About Us</h3>
-                    <p>Overcomers Pavilion Parish (OPP) is a parish under the Redeemed Christian Church of God</p>
+                    <div class="block-header" style="color:gold;font-family:'Dancing Script'">Welcome Home,</div>
                     <p></p>
-                    <div class="social-media">
-                        <!-- <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a> -->
-                        <!-- <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a> -->
-                        <a href="https://www.instagram.com/rccg_opp/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i> RCCG_OPP</a>
-                        <a href="#" class="social-icon"><i class="fab fa-zoom"></i></a>
-                        <!-- <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a> -->
-                    </div>
-                </div>
-                <div class="footer-section links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#">Open Heaven Devotional</a></li>
-                        <li><a href="#">Zoom Link</a></li>
-                        <li><a href="#">Instagram</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section contact">
-                    <h3>Contact Us</h3>
-                    <p>Email: info@rccgopp.org</p>
-                    <p>Phone: <a href="+447490977623">+4474 9097 7623</a>, <a href="tel:+447979270136">+4479 7927 0136</a></p>
-                    <p>Registered Charity. <br> RCCG OPP<br> 6 Harthill Street, <br>Manchester, England,<br> M8 8AG.</p>
+                    <br>
+                    <p>- Pastor and Pastor Mrs. Coker</p>
                 </div>
             </div>
-            <!-- <div class="footer-bottom">OPP is a registered non-profit RN0000000 under the laws of the United Kingdom</div> -->
         </div>
+    </div>
+</section>
 
-        
+<!-- Home / 2026 Theme -->
+<section id="home" class="section">
+    <center>
+        <div class="block-image" style="background: url(2026.jpg) center no-repeat;background-size: cover;"></div>
+        <div class="block">
+            <div class="block-header2" style="color:gold">2026</div>
+            <div class="block-header">Our Year of <span style="font-family:'Dancing Script';">New Beginnings</span></div>
+        </div>
+    </center>
+</section>
+
+<!-- Weekly Meetings -->
+<section id="events" class="section" style="margin-top:-30px">
+    <div class="container meetings-container">
+        <div class="meetings-left">
+            <div class="block-header2"><b>Join Our Weekly Meetings</b></div>
+            <p>Via Zoom call using this link:</p>
+            <p><a href="https://us02web.zoom.us/j/4883949279?pwd=sDUsQaOnGspjUn2DwRA6wVZkcBOfCl.1" style="color:gold">https://us02web.zoom.us/j/4883949279?<br>pwd=sDUsQaOnGspjUn2DwRA6wVZkcBOfCl.1</a></p>
+        </div>
+        <div class="meetings-right">
+            <div class="meeting"><div class="meeting-day block-header">Sundays</div><div class="meeting-text">Sunday Service. (Onsite and Online) 9:30AM - 12:30PM</div></div>
+            <div class="meeting"><div class="meeting-day block-header">Mondays</div><div class="meeting-text">Thanksgiving (Online) 5:30PM - 6:00PM</div></div>
+            <div class="meeting"><div class="meeting-day block-header">Tuesdays</div><div class="meeting-text">Bible Study. (Online) 6:00PM - 7:00PM</div></div>
+            <div class="meeting"><div class="meeting-day block-header">Fridays</div><div class="meeting-text">Family Prayers. (Online) 5:30PM - 6:00PM</div></div>
+            <div class="meeting"><div class="meeting-day block-header">Homeless Outreach</div><div class="meeting-text">Every last Saturday of the month (Picadilly 7pm - 9:30pm)</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- Ministries Section with MODALS (updated content) -->
+<section id="ministries" class="section">
+    <div class="container" style="display: block;">
+        <h2 style="text-align:center; font-size:2.5rem;">Our Ministries</h2>
+        <div class="grid3-container">
+            <div class="grid-item" style="background: url(youth2.png) center no-repeat;background-size: cover; cursor:pointer;" onclick="openModal('youthModal')">
+                <p>Youth Ministry</p>
+            </div>
+            <div class="grid-item" style="background: url(outreach.jpeg) center no-repeat;background-size: cover; cursor:pointer;" onclick="openModal('homelessModal')">
+                <p>Homeless Outreaches</p>
+            </div>
+            <div class="grid-item" style="background: url(branching.png) center no-repeat;background-size: cover; cursor:pointer;" onclick="openModal('branchingModal')">
+                <p>Branching Out</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MODALS -->
+<div id="youthModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('youthModal')">&times;</span>
+        <div class="modal-title">🔥 Youth Events</div>
+        <p>Every year, we gather together as youths on a retreat to immerse ourselves in the pursuit and presence of The Holy Spirit, to learn about Jesus and to be equipped to live the God-life.</p>
+        <p>We also play games and have fun. <strong>This year’s youth retreat is on the 10th - 14th of August.</strong> We also host 3 conferences every year called “Alone with God”. Come, taste and see that the Lord is good.</p>
+    </div>
+</div>
+<div id="homelessModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('homelessModal')">&times;</span>
+        <div class="modal-title">🤝 Homeless Outreaches</div>
+        <p>Every last Saturday of the month, the outreach team walks around Piccadilly handing out hot drinks and food to various homeless individuals on the street. Not only do we feed them, but we pray for them and spread the message of the gospel with them.</p>
+        <p><strong>Dates for 2026 Homeless Outreach:</strong></p>
+        <div class="outreach-dates-grid">
+            <span>📅 Jan 31</span> <span>📅 Feb 28</span> <span>📅 Mar 28</span> <span>📅 Apr 25</span>
+            <span>📅 May 30</span> <span>📅 Jun 27</span> <span>📅 Jul 25</span> <span>📅 Aug 29</span>
+            <span>📅 Sep 26</span> <span>📅 Oct 31</span> <span>📅 Nov 28</span> <span>📅 Dec 26</span>
+        </div>
+    </div>
+</div>
+<div id="branchingModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('branchingModal')">&times;</span>
+        <div class="modal-title">🌿 Branching Out</div>
+        <p>We are a small church with a large heart for Manchester. We know we are one slice of a major movement that God is doing around the city and across the country. We help each other in connecting with the larger projects in our parent church and our community. From logistics to “Festival of Life” events to volunteering in “Let’s Go A-Fishing”, we are committed to the work that God is doing through His servant, Pastor E. A. Adeboye.</p>
+    </div>
+</div>
+
+<script>
+    function openModal(id) { document.getElementById(id).style.display = "block"; }
+    function closeModal(id) { document.getElementById(id).style.display = "none"; }
+    window.onclick = function(e) { if(e.target.classList.contains('modal')) e.target.style.display = "none"; }
+</script>
+
+<!-- BLOG SECTION (new) -->
+<section id="blog-section" class="section">
+    <div class="container" style="display:block;">
+        <div class="section-title">Our Blog & Stories</div>
+        <div class="blog-grid">
+            <a href="youth-trip/">
+            <div class="blog-card">
+                <div class="blog-img" style="background-image: url('youth-trip-thumb.png');"></div>
+                <div class="blog-info">
+                    <div class="blog-title">The 2025 Summer Youth Retreat</div>
+                    <div class="blog-excerpt">A life-changing encounter, worship, and fellowship. Relive the moments of God's move among our youth...</div>
+                    <span class="read-more">Read more →</span>
+                </div>
+            </div>
+            </a>
+            
+        </div>
+    </div>
+</section>
+
+<!-- DYNAMIC UPCOMING EVENTS - Keeping original style (event-box style unchanged) -->
+<section id="dynamic-upcoming" class="section">
+    <div style="max-width: 1400px; margin: auto;">
+        <div class="block-header" style="text-align: center;">Upcoming Events</div>
+        <div id="dynamicEventsGrid" class="events-grid">
+            <!-- dynamically injected event boxes with original design -->
+            <div style="text-align:center; grid-column: span 2;">Loading events...</div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="section">
+    <div class="container">
+        <div class="block">
+            <div class="block-image image1" style="background: url(contact.png?v=2) top center no-repeat;background-size: cover;"></div>
+        </div>
+        <div class="block">
+            <div class="block-header">Contact Us</div>
+            <div class="block-header2">
+                Feel free to reach out to us for any inquiries or prayer requests.
+                <p>Email: info@rccgopp.org</p>
+                <p>Phone: <a href="tel:+447490977623">+4474 9097 7623</a>, <a href="tel:+447979270136">+4479 7927 0136</a></p>
+                <br>
+                <p>Or view our Instagram to stay current on the latest updates from church</p>
+                <p><a target="_blank" href="https://instagram.com/rccg_opp"><div class="btn"><i class="fab fa-instagram"></i> RCCG_OPP</div></a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Visit & Map -->
+<div style="width:100%;margin:auto;text-align: center;" id="visit">
+    <div class="block-header">Join us this Sunday</div>
+    <div class="block-header2">If you're in Manchester, we can't wait to have you. <p>Worship with us at Lincoln 1, Methodist Central Hall, M1 1JQ.</p></div>
+    <br><br>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2374.2244045169155!2d-2.238405973260068!3d53.48232012232909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bba7683115f49%3A0xe36d2103ec4860a2!2sMethodist%20Central%20Hall!5e0!3m2!1sen!2suk!4v1728764170011!5m2!1sen!2suk" width="100%" height="450" style="border:0;" allowfullscreen=""></iframe>
+</div>
+
+<!-- CTA Banner -->
+<div class="pill-wide" style="margin-top: -5px;">
+    <div class="pill-wide-max-width">
+        <div><div class="block-header">Looking for a church home?</div><p>Sundays 09:30 AM. Lincoln 1, 1st floor, Methodist Central Hall, Oldham Street, Manchester Picadilly M1 1JQ.</p></div>
+        <div><a href="https://wa.me/447726705303"><div class="rounded-button">START HERE</div></a></div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>About Us</h3>
+                <p>Overcomers Pavilion Parish (OPP) is a parish under the Redeemed Christian Church of God</p>
+                <div class="social-media">
+                    <a href="https://www.instagram.com/rccg_opp/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i> RCCG_OPP</a>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Open Heaven Devotional</a></li>
+                    <li><a href="#">Zoom Link</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <p>Email: info@rccgopp.org</p>
+                <p>Phone: <a href="tel:+447490977623">+4474 9097 7623</a>, <a href="tel:+447979270136">+4479 7927 0136</a></p>
+                <p>Registered Charity. <br> RCCG OPP<br> 6 Harthill Street, <br>Manchester, England,<br> M8 8AG.</p>
+            </div>
+        </div>
         <center style="text-align: center;">
-
-        
-        
-        <br>
-        <br>au
-        <br>
-        <br>
-        
+            <br><br>
             <p>&copy; 2026 Overcomers Pavilion Parish RCCG. All rights reserved.</p>
+            <br>
+            <p>The Redeemed Christian Church of God Overcomers Pavilion Parish is a registered charity (No. 1213265)</p>
+            <p>Our address is located at 6 Harthill Street, Manchester, England, M8 8AG.</p>
+            
+            <br>
+            <br>
             For King Jesus 👑
         </center>
     </div>
-    
-    <script>
-        // Function to handle elements as they scroll into view
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        });
-    
-        // Target all elements with the 'fade-in' class
-        const fadeInElements = document.querySelectorAll('.fade-in');
-        fadeInElements.forEach((el) => observer.observe(el));
-    </script>
+</div>
 
+<script>
+    // ---- FULL YEAR JSON DATA (based on provided calendar) ----
+    const fullEventsList = [
+        { month: "JANUARY", day: 10, title: "Youth Meeting", time: "", location: "", rawDate: "2026-01-10" },
+        { month: "JANUARY", day: 17, title: "Youth Meeting / Alone with God (Q1)", time: "", location: "", rawDate: "2026-01-17" },
+        { month: "JANUARY", day: 18, title: "Youth Sunday Ministration", time: "", location: "", rawDate: "2026-01-18" },
+        { month: "JANUARY", day: 24, title: "Homeless outreach/Evangelism", time: "", location: "", rawDate: "2026-01-24" },
+        { month: "FEBRUARY", day: 14, title: "Valentine’s Youth Outing", time: "", location: "RCCG UK EVANGELISM WORKSHOP", rawDate: "2026-02-14" },
+        { month: "FEBRUARY", day: 15, title: "Youth Sunday Ministration", time: "", location: "", rawDate: "2026-02-15" },
+        { month: "FEBRUARY", day: 21, title: "Youth Meeting", time: "", location: "", rawDate: "2026-02-21" },
+        { month: "FEBRUARY", day: 28, title: "Homeless outreach/Evangelism", time: "", location: "", rawDate: "2026-02-28" },
+        { month: "MARCH", day: 8, title: "INTERNATIONAL WOMEN’S DAY", time: "", location: "", rawDate: "2026-03-08" },
+        { month: "MARCH", day: 14, title: "Youth Meeting", time: "", location: "", rawDate: "2026-03-14" },
+        { month: "MARCH", day: 15, title: "Youth Sunday Ministration", time: "", location: "Mother’s Day", rawDate: "2026-03-15" },
+        { month: "MARCH", day: 21, title: "Youth Meeting / Alone with God (Q2)", time: "", location: "", rawDate: "2026-03-21" },
+        { month: "MARCH", day: 28, title: "Homeless outreach/Evangelism", time: "", location: "CONTINENTAL EVANGELISM CONFERENCE (ONLINE)", rawDate: "2026-03-28" },
+        { month: "APRIL", day: 3, title: "Good Friday", time: "", location: "CONTINENTAL LET’S-GO-A-FISHING", rawDate: "2026-04-03" },
+        { month: "APRIL", day: 5, title: "Easter Sunday", time: "", location: "CONTINENTAL LET’S-GO-A-FISHING", rawDate: "2026-04-05" },
+        { month: "APRIL", day: 6, title: "Easter Monday", time: "All Day", location: "CONTINENTAL LET’S-GO-A-FISHING", rawDate: "2026-04-06" },
+        { month: "APRIL", day: 8, title: "CONTINENTAL WORKERS’ RALLY WITH THE GENERAL OVERSEER", time: "All Day", location: "RCCG HQ", rawDate: "2026-04-08" },
+        { month: "APRIL", day: 10, title: "FESTIVAL OF LIFE, LONDON", time: "5pm - 3am Saturday", location: "", rawDate: "2026-04-10" },
+        { month: "APRIL", day: 11, title: "Youth Meeting", time: "4pm - 7pm", location: "", rawDate: "2026-04-11" },
+        { month: "APRIL", day: 18, title: "Youth Meeting", time: "4pm - 7pm", location: "", rawDate: "2026-04-18" },
+        { month: "APRIL", day: 19, title: "Youth Sunday Ministration", time: "", location: "", rawDate: "2026-04-19" },
+        { month: "APRIL", day: 25, title: "Homeless outreach/Evangelism", time: "7pm - 9:30pm", location: "Picadilly", rawDate: "2026-04-25" },
+        { month: "MAY", day: 9, title: "Youth Meeting", time: "4pm - 7pm", location: "", rawDate: "2026-05-09" },
+        { month: "MAY", day: 16, title: "Youth Meeting / Alone with God (Q3)", time: "9am - 4pm", location: "Methodist Hall, Picadilly", rawDate: "2026-05-16" },
+        { month: "MAY", day: 17, title: "Youth Sunday Ministration", time: "9:30am - 1pm", location: "", rawDate: "2026-05-17" },
+        { month: "MAY", day: 25, title: "RCCG UK CHILDREN’S WEEK / EVANGELISM WEEK", time: "All Day", location: "", rawDate: "2026-05-25" },
+        { month: "MAY", day: 31, title: "CHILDREN’S SUNDAY / Evangelism Sunday", time: "All Day", location: "", rawDate: "2026-05-31" },
+        { month: "JUNE", day: 13, title: "Youth Meeting", time: "4pm - 7pm", location: "", rawDate: "2026-06-13" },
+        { month: "JUNE", day: 20, title: "Homeless Outreach/Evangelism", time: "", location: "", rawDate: "2026-06-20" },
+        { month: "JUNE", day: 21, title: "Youth Sunday Ministration", time: "", location: "", rawDate: "2026-06-21" },
+        { month: "JUNE", day: 27, title: "Youth Meeting", time: "4pm - 7pm", location: "", rawDate: "2026-06-27" },
+        { month: "JULY", day: 2, title: "PASTORS’ APPRECIATION WEEK", time: "", location: "", rawDate: "2026-07-02" },
+        { month: "JULY", day: 11, title: "Youth Meeting", time: "4pm - 7pm", location: "", rawDate: "2026-07-11" },
+        { month: "JULY", day: 18, title: "Homeless outreach/Evangelism", time: "", location: "", rawDate: "2026-07-18" },
+        { month: "JULY", day: 19, title: "Youth Sunday Ministration", time: "", location: "", rawDate: "2026-07-19" },
+        { month: "JULY", day: 25, title: "Youth Meeting", time: "4pm - 7pm", location: "", rawDate: "2026-07-25" },
+        { month: "AUGUST", day: 3, title: "Annual Convention", time: "", location: "", rawDate: "2026-08-03" },
+        { month: "AUGUST", day: 10, title: "Youth Retreat Begins", time: "All Day", location: "Kidderminster", rawDate: "2026-08-10" },
+        { month: "AUGUST", day: 11, title: "Youth Retreat", time: "", location: "", rawDate: "2026-08-11" },
+        { month: "AUGUST", day: 12, title: "Youth Retreat", time: "", location: "", rawDate: "2026-08-12" },
+        { month: "AUGUST", day: 13, title: "Youth Retreat", time: "", location: "", rawDate: "2026-08-13" },
+        { month: "AUGUST", day: 14, title: "Youth Retreat Ends", time: "", location: "", rawDate: "2026-08-14" },
+        { month: "AUGUST", day: 16, title: "Thanksgiving Sunday", time: "", location: "", rawDate: "2026-08-16" },
+        { month: "AUGUST", day: 22, title: "Homeless outreach/Evangelism", time: "", location: "", rawDate: "2026-08-22" },
+        { month: "AUGUST", day: 29, title: "Youth Meeting / Outing", time: "", location: "", rawDate: "2026-08-29" },
+        { month: "SEPTEMBER", day: 12, title: "Youth Meeting", time: "", location: "", rawDate: "2026-09-12" },
+        { month: "SEPTEMBER", day: 19, title: "Seminar and Training", time: "", location: "", rawDate: "2026-09-19" },
+        { month: "SEPTEMBER", day: 20, title: "Youth Sunday Ministration", time: "", location: "", rawDate: "2026-09-20" },
+        { month: "SEPTEMBER", day: 27, title: "Homeless outreach/Evangelism", time: "", location: "", rawDate: "2026-09-27" },
+        { month: "OCTOBER", day: 10, title: "Youth Meeting", time: "4pm - 7pm", location: "", rawDate: "2026-10-10" },
+        { month: "OCTOBER", day: 17, title: "Youth Meeting / Alone with God (Q4)", time: "", location: "", rawDate: "2026-10-17" },
+        { month: "OCTOBER", day: 18, title: "Youth Sunday Ministration", time: "", location: "", rawDate: "2026-10-18" },
+        { month: "OCTOBER", day: 24, title: "Homeless Outreach/Evangelism", time: "", location: "", rawDate: "2026-10-24" },
+        { month: "OCTOBER", day: 31, title: "Youth Meeting", time: "4pm - 7pm", location: "CONTINENTAL EVANGELISM Outreach (STREET EVANGELISM)", rawDate: "2026-10-31" },
+        { month: "NOVEMBER", day: 14, title: "Youth Meeting", time: "4pm - 7pm", location: "", rawDate: "2026-11-14" },
+        { month: "NOVEMBER", day: 15, title: "Youth Sunday Ministration", time: "", location: "", rawDate: "2026-11-15" },
+        { month: "NOVEMBER", day: 21, title: "Youth Meeting", time: "4pm - 7pm", location: "", rawDate: "2026-11-21" },
+        { month: "NOVEMBER", day: 28, title: "Homeless Outreach / Evangelism", time: "", location: "", rawDate: "2026-11-28" },
+        { month: "DECEMBER", day: 12, title: "Youth Meeting", time: "4pm - 7pm", location: "", rawDate: "2026-12-12" },
+        { month: "DECEMBER", day: 19, title: "Youth Meeting", time: "4pm - 7pm", location: "", rawDate: "2026-12-19" },
+        { month: "DECEMBER", day: 20, title: "Youth Sunday Ministration", time: "", location: "", rawDate: "2026-12-20" },
+        { month: "DECEMBER", day: 26, title: "Boxing Day out (Street)", time: "", location: "", rawDate: "2026-12-26" }
+    ];
+
+    // Get today's date (start of day)
+    const todayDate = new Date();
+    todayDate.setHours(0,0,0,0);
+
+    // Filter upcoming events (rawDate >= today)
+    const upcomingEvents = fullEventsList.filter(ev => {
+        const evDate = new Date(ev.rawDate);
+        return evDate >= todayDate;
+    }).sort((a,b) => new Date(a.rawDate) - new Date(b.rawDate));
+
+    // Take first 4
+    const next4Events = upcomingEvents.slice(0,8);
+
+    // Render into .events-grid while preserving original styling (event-box)
+    const gridContainer = document.getElementById("dynamicEventsGrid");
+    if (next4Events.length === 0) {
+        gridContainer.innerHTML = `<div class="event-box" style="grid-column: span 2; text-align:center;">No upcoming events at this time. Check back soon!</div>`;
+    } else {
+        let boxesHTML = "";
+        next4Events.forEach(ev => {
+            // Format month and day display
+            const monthUpper = ev.month;
+            const dayNum = ev.day;
+            // title + optional location note
+            let locationText = ev.location ? ev.location : "";
+            boxesHTML += `
+                <div class="event-box">
+                    <div class="month">${monthUpper}</div>
+                    <div class="date">${dayNum}</div>
+                    <div class="event-title">${ev.title}</div>
+                    <div class="event-time">${ev.time || "All are welcome"}</div>
+                    ${locationText ? `<div class="event-location">${locationText}</div>` : `<div class="event-location"> </div>`}
+                </div>
+            `;
+        });
+        gridContainer.innerHTML = boxesHTML;
+    }
+</script>
+
+<!-- Fade-in observer -->
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+    });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
